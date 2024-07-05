@@ -5,11 +5,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 from weather import get_current_weather, get_daily_forecast, get_atmospheric_conditions  # Импорт функций из weather.py
 import requests
-import logging
 import config
-
-# Настройка логирования
-logging.basicConfig(level=logging.INFO)
 
 # Создание роутера для обработки команд
 router = Router()
@@ -62,13 +58,11 @@ async def send_weather(message: Message, state: FSMContext):
 
     # Преобразование города в координаты (широта и долгота) с использованием OpenCage Geocoder
     geocode_url = f"https://api.opencagedata.com/geocode/v1/json?q={city}&key={config.OPENCAGE_API_KEY}"
-    logging.info(f"Запрос геокодирования по URL: {geocode_url}")
 
     try:
         response = requests.get(geocode_url)
         response.raise_for_status()  # Проверка на успешный статус ответа
         geocode_response = response.json()
-        logging.info(f"Ответ от геокодирования: {geocode_response}")
 
         if geocode_response['results']:
             lat = geocode_response['results'][0]['geometry']['lat']
@@ -80,8 +74,6 @@ async def send_weather(message: Message, state: FSMContext):
         else:
             await message.answer("Не удалось найти координаты города. Пожалуйста, проверьте название города.")
     except requests.exceptions.RequestException as e:
-        logging.error(f"Ошибка при запросе геокодирования: {e}")
         await message.answer("Произошла ошибка при получении данных. Попробуйте позже.")
     except ValueError:
-        logging.error("Некорректный ответ от сервера геокодирования")
         await message.answer("Произошла ошибка при обработке данных. Попробуйте позже.")

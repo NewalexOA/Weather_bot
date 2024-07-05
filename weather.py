@@ -1,15 +1,9 @@
 import requests
-import logging
-
-# Настройка логирования
-logging.basicConfig(level=logging.INFO)
 
 # Функция для получения данных о погоде с Open-Meteo API
 def get_weather_data(lat: float, lon: float, params: str):
     url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&{params}"
-    logging.info(f"Запрос данных погоды по URL: {url}")
     response = requests.get(url)
-    logging.info(f"Ответ от API: {response.text}")
     return response.json()
 
 # Функция для получения текущей погоды
