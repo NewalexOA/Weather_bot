@@ -10,6 +10,22 @@
 
 Этот бот Telegram использует OpenWeatherMap API для получения прогноза погоды в трех форматах: минутный прогноз на 1 час, почасовой прогноз на 48 часов и дневной прогноз на 8 дней. Бот поддерживает установку города пользователем и сохранение его состояния с помощью Redis.
 
+### Объяснение кода
+
+1. **weather.py**:
+    * **get_weather_data**: Выполняет запрос к OpenWeatherMap API для получения данных о погоде.
+    * **format_minutely_forecast, format_hourly_forecast, format_daily_forecast**: Форматируют данные для минутного, почасового и дневного прогнозов соответственно.
+    * **get_weather_forecast**: Получает данные о погоде и возвращает форматированные строки для всех трех типов прогнозов.
+
+2. **handlers.py**:
+    * **WeatherStates**: Определяет состояния для машины состояний (FSM).
+    * **send_welcome**: Отправляет приветственное сообщение при старте.
+    * **send_help**: Отправляет сообщение с инструкциями при вызове команды /help.
+    * **set_city, receive_city**: Обрабатывают команду /setcity и сохраняют введенный город.
+    * **send_weather**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
+
+3. **main.py**:
+    * **main**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
 ### Установка и требования
 
 1. Клонируйте репозиторий:
@@ -55,29 +71,29 @@
     ```sh
     python main.py
     ```
-
-### Объяснение кода
-
-1. **weather.py**:
-    * **get_weather_data**: Выполняет запрос к OpenWeatherMap API для получения данных о погоде.
-    * **format_minutely_forecast, format_hourly_forecast, format_daily_forecast**: Форматируют данные для минутного, почасового и дневного прогнозов соответственно.
-    * **get_weather_forecast**: Получает данные о погоде и возвращает форматированные строки для всех трех типов прогнозов.
-
-2. **handlers.py**:
-    * **WeatherStates**: Определяет состояния для машины состояний (FSM).
-    * **send_welcome**: Отправляет приветственное сообщение при старте.
-    * **send_help**: Отправляет сообщение с инструкциями при вызове команды /help.
-    * **set_city, receive_city**: Обрабатывают команду /setcity и сохраняют введенный город.
-    * **send_weather**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
-
-3. **main.py**:
-    * **main**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
-
+   
 ## <a name="english"></a>Description in English
 
 ### Description
 
 This Telegram bot uses the OpenWeatherMap API to get weather forecasts in three formats: minutely forecast for 1 hour, hourly forecast for 48 hours, and daily forecast for 8 days. The bot supports setting the city by the user and saving its state using Redis.
+
+### Code Explanation
+
+1. **weather.py**:
+    * **get_weather_data**: Makes a request to the OpenWeatherMap API to get weather data.
+    * **format_minutely_forecast, format_hourly_forecast, format_daily_forecast**: Format data for minutely, hourly, and daily forecasts respectively.
+    * **get_weather_forecast**: Fetches weather data and returns formatted strings for all three types of forecasts.
+
+2. **handlers.py**:
+    * **WeatherStates**: Defines states for the finite state machine (FSM).
+    * **send_welcome**: Sends a welcome message on start.
+    * **send_help**: Sends a help message when the /help command is called.
+    * **set_city, receive_city**: Handle the /setcity command and save the entered city.
+    * **send_weather**: Converts the entered city to coordinates, fetches the weather forecast, and sends it to the user.
+
+3. **main.py**:
+    * **main**: Initializes the bot, connects Redis for state storage, sets up commands, and starts polling.
 
 ### Installation and Requirements
 
@@ -124,22 +140,4 @@ This Telegram bot uses the OpenWeatherMap API to get weather forecasts in three 
     ```sh
     python main.py
     ```
-
-### Code Explanation
-
-1. **weather.py**:
-    * **get_weather_data**: Makes a request to the OpenWeatherMap API to get weather data.
-    * **format_minutely_forecast, format_hourly_forecast, format_daily_forecast**: Format data for minutely, hourly, and daily forecasts respectively.
-    * **get_weather_forecast**: Fetches weather data and returns formatted strings for all three types of forecasts.
-
-2. **handlers.py**:
-    * **WeatherStates**: Defines states for the finite state machine (FSM).
-    * **send_welcome**: Sends a welcome message on start.
-    * **send_help**: Sends a help message when the /help command is called.
-    * **set_city, receive_city**: Handle the /setcity command and save the entered city.
-    * **send_weather**: Converts the entered city to coordinates, fetches the weather forecast, and sends it to the user.
-
-3. **main.py**:
-    * **main**: Initializes the bot, connects Redis for state storage, sets up commands, and starts polling.
-
 ---
