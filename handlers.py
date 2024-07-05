@@ -3,9 +3,13 @@ from aiogram.types import Message
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
-from weather import get_weather_forecast
-import config
+from weather import get_current_weather, get_daily_forecast, get_atmospheric_conditions  # Импорт функций из weather.py
 import requests
+import logging
+import config
+
+# Настройка логирования
+logging.basicConfig(level=logging.INFO)
 
 # Создание роутера для обработки команд
 router = Router()
@@ -56,13 +60,28 @@ async def send_weather(message: Message, state: FSMContext):
     data = await state.get_data()
     city = data.get("city", "Москва")
 
-    # Преобразование города в координаты (широта и долгота)
-    geocode_url = f"http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={config.WEATHER_API_KEY}"
-    geocode_response = requests.get(geocode_url).json()
-    if geocode_response:
-        lat = geocode_response[0]['lat']
-        lon = geocode_response[0]['lon']
-        weather_info = get_weather_forecast(lat, lon, config.WEATHER_API_KEY)
-        await message.answer(weather_info)
-    else:
-        await message.answer("Не удалось найти координаты города. Пожалуйста, проверьте название города.")
+    # Преобразование города в координаты (широта и долгота) с использованием OpenCage Geocoder
+    geocode_url = f"https://api.opencagedata.com/geocode/v1/json?q={city}&key={config.OPENCAGE_API_KEY}"
+    logging.info(f"Запрос геокодирования по URL: {geocode_url}")
+
+    try:
+        response = requests.get(geocode_url)
+        response.raise_for_status()  # Проверка на успешный статус ответа
+        geocode_response = response.json()
+        logging.info(f"Ответ от геокодирования: {geocode_response}")
+
+        if geocode_response['results']:
+            lat = geocode_response['results'][0]['geometry']['lat']
+            lon = geocode_response['results'][0]['geometry']['lng']
+            current_weather = get_current_weather(lat, lon)
+            daily_forecast = get_daily_forecast(lat, lon)
+            atmospheric_conditions = get_atmospheric_conditions(lat, lon)
+            await message.answer(f"{current_weather}\n\n{daily_forecast}\n\n{atmospheric_conditions}")
+        else:
+            await message.answer("Не удалось найти координаты города. Пожалуйста, проверьте название города.")
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Ошибка при запросе геокодирования: {e}")
+        await message.answer("Произошла ошибка при получении данных. Попробуйте позже.")
+    except ValueError:
+        logging.error("Некорректный ответ от сервера геокодирования")
+        await message.answer("Произошла ошибка при обработке данных. Попробуйте позже.")
