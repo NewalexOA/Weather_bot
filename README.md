@@ -13,22 +13,22 @@
 ### Объяснение кода
 
 1. **weather.py**:
-    * **[`get_weather_data`](weather.py#L8)**: Выполняет запрос к Open-Meteo API для получения данных о погоде.
-    * **[`get_current_weather`](weather.py#L16)**: Получает текущую погоду и форматирует данные для отображения.
-    * **[`get_daily_forecast`](weather.py#L30)**: Получает дневной прогноз погоды и форматирует данные для отображения.
-    * **[`get_atmospheric_conditions`](weather.py#L46)**: Получает данные об атмосферных явлениях и форматирует их.
-    * **[`get_hourly_forecast`](weather.py#L64), [`get_solar_and_uv_index`](weather.py#L82)**: (На будущее) Получают почасовой прогноз и данные о солнечной радиации и УФ-индексе соответственно.
-    * **[`get_weather_description`](weather.py#L97)**: Возвращает описание погодных условий на основе кода погоды.
+    * **[`get_weather_data`](weather.py#L4)**: Выполняет запрос к Open-Meteo API для получения данных о погоде.
+    * **[`get_current_weather`](weather.py#L10)**: Получает текущую погоду и форматирует данные для отображения.
+    * **[`get_daily_forecast`](weather.py#L24)**: Получает дневной прогноз погоды и форматирует данные для отображения.
+    * **[`get_atmospheric_conditions`](weather.py#L40)**: Получает данные об атмосферных явлениях и форматирует их.
+    * **[`get_hourly_forecast`](weather.py#L58), [`get_solar_and_uv_index`](weather.py#L76)**: (На будущее) Получают почасовой прогноз и данные о солнечной радиации и УФ-индексе соответственно.
+    * **[`get_weather_description`](weather.py#L91)**: Возвращает описание погодных условий на основе кода погоды.
 
 2. **handlers.py**:
-    * **[`WeatherStates`](handlers.py#L18)**: Класс. Определяет состояния для машины состояний (FSM).
-    * **[`send_welcome`](handlers.py#L23)**: Отправляет приветственное сообщение при старте.
-    * **[`send_help`](handlers.py#L33)**: Отправляет сообщение с инструкциями при вызове команды /help.
-    * **[`set_city`](handlers.py#L42), [`receive_city`](handlers.py#L49)**: Обрабатывают команду /setcity и сохраняют введенный город.
-    * **[`send_weather`](handlers.py#L59)**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
+    * **[`WeatherStates`](handlers.py#L14)**: Класс. Определяет состояния для машины состояний (FSM).
+    * **[`send_welcome`](handlers.py#L19)**: Отправляет приветственное сообщение при старте.
+    * **[`send_help`](handlers.py#L29)**: Отправляет сообщение с инструкциями при вызове команды /help.
+    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L45)**: Обрабатывают команду /setcity и сохраняют введенный город.
+    * **[`send_weather`](handlers.py#L55)**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
 
 3. **main.py**:
-    * **[`main`](main.py#L12)**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
+    * **[`main`](main.py#L9)**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
 
 ### Требования
 
@@ -74,22 +74,22 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
 ### Code Explanation
 
 1. **weather.py**:
-    * **[`get_weather_data`](weather.py#L8)**: Makes a request to the Open-Meteo API to get weather data.
-    * **[`get_current_weather`](weather.py#L17)**: Gets current weather and formats the data for display.
-    * **[`get_daily_forecast`](weather.py#L26)**: Gets daily weather forecast and formats the data for display.
-    * **[`get_atmospheric_conditions`](weather.py#L38)**: Gets atmospheric conditions data and formats it.
-    * **[`get_hourly_forecast`](weather.py#L54), [`get_solar_and_uv_index`](weather.py#L70)**: (Future) Get hourly forecast and solar radiation and UV index data respectively.
-    * **[`get_weather_description`](weather.py#L89)**: Returns weather condition description based on the weather code.
+    * **[`get_weather_data`](weather.py#L4)**: Makes a request to the Open-Meteo API to get weather data.
+    * **[`get_current_weather`](weather.py#L10)**: Gets current weather and formats the data for display.
+    * **[`get_daily_forecast`](weather.py#L24)**: Gets daily weather forecast and formats the data for display.
+    * **[`get_atmospheric_conditions`](weather.py#L40)**: Gets atmospheric conditions data and formats it.
+    * **[`get_hourly_forecast`](weather.py#L58), [`get_solar_and_uv_index`](weather.py#L76)**: (Future) Get hourly forecast and solar radiation and UV index data respectively.
+    * **[`get_weather_description`](weather.py#L91)**: Returns weather condition description based on the weather code.
 
 2. **handlers.py**:
-    * **[`WeatherStates`](handlers.py#L16)**: Defines states for the finite state machine (FSM).
-    * **[`send_welcome`](handlers.py#L22)**: Sends a welcome message at the start.
-    * **[`send_help`](handlers.py#L30)**: Sends an instruction message when the /help command is called.
-    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L47)**: Handle the /setcity command and save the entered city.
-    * **[`send_weather`](handlers.py#L56)**: Converts the entered city to coordinates, gets the weather forecast, and sends it to the user.
+    * **[`WeatherStates`](handlers.py#L14)**: Defines states for the finite state machine (FSM).
+    * **[`send_welcome`](handlers.py#L19)**: Sends a welcome message at the start.
+    * **[`send_help`](handlers.py#L29)**: Sends an instruction message when the /help command is called.
+    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L45)**: Handle the /setcity command and save the entered city.
+    * **[`send_weather`](handlers.py#L55)**: Converts the entered city to coordinates, gets the weather forecast, and sends it to the user.
 
 3. **main.py**:
-    * **[`main`](main.py#L12)**: Initializes the bot, connects Redis for state storage, sets commands, and starts polling.
+    * **[`main`](main.py#L9)**: Initializes the bot, connects Redis for state storage, sets commands, and starts polling.
 
 ### Requirements
 
