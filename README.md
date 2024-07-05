@@ -4,7 +4,7 @@
 
 ---
 
-## <a name="русский"></a>Описание на русском языке
+## <a name="русский"></а>Описание на русском языке
 
 ### Описание
 
@@ -14,11 +14,11 @@
 
 1. **weather.py**:
     * **[`get_weather_data`](weather.py#L8)**: Выполняет запрос к Open-Meteo API для получения данных о погоде.
-    * **[`get_current_weather`](weather.py#L16)**: Получает текущую погоду и форматирует данные для отображения.
-    * **[`get_daily_forecast`](weather.py#L28)**: Получает дневной прогноз погоды и форматирует данные для отображения.
-    * **[`get_atmospheric_conditions`](weather.py#L41)**: Получает данные об атмосферных явлениях и форматирует их.
-    * **[`get_hourly_forecast`](weather.py#L55), [`get_solar_and_uv_index`](weather.py#L69)**: (На будущее) Получают почасовой прогноз и данные о солнечной радиации и УФ-индексе соответственно.
-    * **[`get_weather_description`](weather.py#L83)**: Возвращает описание погодных условий на основе кода погоды.
+    * **[`get_current_weather`](weather.py#L17)**: Получает текущую погоду и форматирует данные для отображения.
+    * **[`get_daily_forecast`](weather.py#L26)**: Получает дневной прогноз погоды и форматирует данные для отображения.
+    * **[`get_atmospheric_conditions`](weather.py#L38)**: Получает данные об атмосферных явлениях и форматирует их.
+    * **[`get_hourly_forecast`](weather.py#L54), [`get_solar_and_uv_index`](weather.py#L70)**: (На будущее) Получают почасовой прогноз и данные о солнечной радиации и УФ-индексе соответственно.
+    * **[`get_weather_description`](weather.py#L89)**: Возвращает описание погодных условий на основе кода погоды.
 
 2. **handlers.py**:
     * **[`WeatherStates`](handlers.py#L16)**: Определяет состояния для машины состояний (FSM).
@@ -75,11 +75,11 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
 
 1. **weather.py**:
     * **[`get_weather_data`](weather.py#L8)**: Makes a request to the Open-Meteo API to get weather data.
-    * **[`get_current_weather`](weather.py#L16)**: Gets current weather and formats the data for display.
-    * **[`get_daily_forecast`](weather.py#L28)**: Gets daily weather forecast and formats the data for display.
-    * **[`get_atmospheric_conditions`](weather.py#L41)**: Gets atmospheric conditions data and formats it.
-    * **[`get_hourly_forecast`](weather.py#L55), [`get_solar_and_uv_index`](weather.py#L69)**: (Future) Get hourly forecast and solar radiation and UV index data respectively.
-    * **[`get_weather_description`](weather.py#L83)**: Returns weather condition description based on the weather code.
+    * **[`get_current_weather`](weather.py#L17)**: Gets current weather and formats the data for display.
+    * **[`get_daily_forecast`](weather.py#L26)**: Gets daily weather forecast and formats the data for display.
+    * **[`get_atmospheric_conditions`](weather.py#L38)**: Gets atmospheric conditions data and formats it.
+    * **[`get_hourly_forecast`](weather.py#L54), [`get_solar_and_uv_index`](weather.py#L70)**: (Future) Get hourly forecast and solar radiation and UV index data respectively.
+    * **[`get_weather_description`](weather.py#L89)**: Returns weather condition description based on the weather code.
 
 2. **handlers.py**:
     * **[`WeatherStates`](handlers.py#L16)**: Defines states for the finite state machine (FSM).
