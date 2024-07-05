@@ -13,22 +13,22 @@
 ### Объяснение кода
 
 1. **weather.py**:
-    * **`get_weather_data`**: Выполняет запрос к Open-Meteo API для получения данных о погоде.
-    * **`get_current_weather`**: Получает текущую погоду и форматирует данные для отображения.
-    * **`get_daily_forecast`**: Получает дневной прогноз погоды и форматирует данные для отображения.
-    * **`get_atmospheric_conditions`**: Получает данные об атмосферных явлениях и форматирует их.
-    * **`get_hourly_forecast`, `get_solar_and_uv_index`**: (На будущее) Получают почасовой прогноз и данные о солнечной радиации и УФ-индексе соответственно.
-    * **`get_weather_description`**: Возвращает описание погодных условий на основе кода погоды.
+    * **[`get_weather_data`](weather.py#L8)**: Выполняет запрос к Open-Meteo API для получения данных о погоде.
+    * **[`get_current_weather`](weather.py#L16)**: Получает текущую погоду и форматирует данные для отображения.
+    * **[`get_daily_forecast`](weather.py#L28)**: Получает дневной прогноз погоды и форматирует данные для отображения.
+    * **[`get_atmospheric_conditions`](weather.py#L41)**: Получает данные об атмосферных явлениях и форматирует их.
+    * **[`get_hourly_forecast`](weather.py#L55), [`get_solar_and_uv_index`](weather.py#L69)**: (На будущее) Получают почасовой прогноз и данные о солнечной радиации и УФ-индексе соответственно.
+    * **[`get_weather_description`](weather.py#L83)**: Возвращает описание погодных условий на основе кода погоды.
 
 2. **handlers.py**:
-    * **`WeatherStates`**: Определяет состояния для машины состояний (FSM).
-    * **`send_welcome`**: Отправляет приветственное сообщение при старте.
-    * **`send_help`**: Отправляет сообщение с инструкциями при вызове команды /help.
-    * **`set_city`, `receive_city`**: Обрабатывают команду /setcity и сохраняют введенный город.
-    * **`send_weather`**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
+    * **[`WeatherStates`](handlers.py#L16)**: Определяет состояния для машины состояний (FSM).
+    * **[`send_welcome`](handlers.py#L22)**: Отправляет приветственное сообщение при старте.
+    * **[`send_help`](handlers.py#L30)**: Отправляет сообщение с инструкциями при вызове команды /help.
+    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L47)**: Обрабатывают команду /setcity и сохраняют введенный город.
+    * **[`send_weather`](handlers.py#L56)**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
 
 3. **main.py**:
-    * **`main`**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
+    * **[`main`](main.py#L12)**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
 
 ### Требования
 
@@ -74,22 +74,22 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
 ### Code Explanation
 
 1. **weather.py**:
-    * **`get_weather_data`**: Makes a request to the Open-Meteo API to get weather data.
-    * **`get_current_weather`**: Gets current weather and formats the data for display.
-    * **`get_daily_forecast`**: Gets daily weather forecast and formats the data for display.
-    * **`get_atmospheric_conditions`**: Gets atmospheric conditions data and formats it.
-    * **`get_hourly_forecast`, `get_solar_and_uv_index`**: (Future) Get hourly forecast and solar radiation and UV index data respectively.
-    * **`get_weather_description`**: Returns weather condition description based on the weather code.
+    * **[`get_weather_data`](weather.py#L8)**: Makes a request to the Open-Meteo API to get weather data.
+    * **[`get_current_weather`](weather.py#L16)**: Gets current weather and formats the data for display.
+    * **[`get_daily_forecast`](weather.py#L28)**: Gets daily weather forecast and formats the data for display.
+    * **[`get_atmospheric_conditions`](weather.py#L41)**: Gets atmospheric conditions data and formats it.
+    * **[`get_hourly_forecast`](weather.py#L55), [`get_solar_and_uv_index`](weather.py#L69)**: (Future) Get hourly forecast and solar radiation and UV index data respectively.
+    * **[`get_weather_description`](weather.py#L83)**: Returns weather condition description based on the weather code.
 
 2. **handlers.py**:
-    * **`WeatherStates`**: Defines states for the finite state machine (FSM).
-    * **`send_welcome`**: Sends a welcome message at the start.
-    * **`send_help`**: Sends an instruction message when the /help command is called.
-    * **`set_city`, `receive_city`**: Handle the /setcity command and save the entered city.
-    * **`send_weather`**: Converts the entered city to coordinates, gets the weather forecast, and sends it to the user.
+    * **[`WeatherStates`](handlers.py#L16)**: Defines states for the finite state machine (FSM).
+    * **[`send_welcome`](handlers.py#L22)**: Sends a welcome message at the start.
+    * **[`send_help`](handlers.py#L30)**: Sends an instruction message when the /help command is called.
+    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L47)**: Handle the /setcity command and save the entered city.
+    * **[`send_weather`](handlers.py#L56)**: Converts the entered city to coordinates, gets the weather forecast, and sends it to the user.
 
 3. **main.py**:
-    * **`main`**: Initializes the bot, connects Redis for state storage, sets commands, and starts polling.
+    * **[`main`](main.py#L12)**: Initializes the bot, connects Redis for state storage, sets commands, and starts polling.
 
 ### Requirements
 
