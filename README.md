@@ -8,136 +8,118 @@
 
 ### Описание
 
-Этот бот Telegram использует OpenWeatherMap API для получения прогноза погоды в трех форматах: минутный прогноз на 1 час, почасовой прогноз на 48 часов и дневной прогноз на 8 дней. Бот поддерживает установку города пользователем и сохранение его состояния с помощью Redis.
+Этот проект представляет собой Telegram-бота WeatherBot, который предоставляет актуальную информацию о погоде. Бот позволяет пользователям устанавливать свой город и получать прогноз погоды, включая текущую температуру, дневной прогноз и атмосферные явления.
 
 ### Объяснение кода
 
 1. **weather.py**:
-    * **get_weather_data**: Выполняет запрос к OpenWeatherMap API для получения данных о погоде.
-    * **format_minutely_forecast, format_hourly_forecast, format_daily_forecast**: Форматируют данные для минутного, почасового и дневного прогнозов соответственно.
-    * **get_weather_forecast**: Получает данные о погоде и возвращает форматированные строки для всех трех типов прогнозов.
+    * **`get_weather_data`**: Выполняет запрос к Open-Meteo API для получения данных о погоде.
+    * **`get_current_weather`**: Получает текущую погоду и форматирует данные для отображения.
+    * **`get_daily_forecast`**: Получает дневной прогноз погоды и форматирует данные для отображения.
+    * **`get_atmospheric_conditions`**: Получает данные об атмосферных явлениях и форматирует их.
+    * **`get_hourly_forecast`, `get_solar_and_uv_index`**: (На будущее) Получают почасовой прогноз и данные о солнечной радиации и УФ-индексе соответственно.
+    * **`get_weather_description`**: Возвращает описание погодных условий на основе кода погоды.
 
 2. **handlers.py**:
-    * **WeatherStates**: Определяет состояния для машины состояний (FSM).
-    * **send_welcome**: Отправляет приветственное сообщение при старте.
-    * **send_help**: Отправляет сообщение с инструкциями при вызове команды /help.
-    * **set_city, receive_city**: Обрабатывают команду /setcity и сохраняют введенный город.
-    * **send_weather**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
+    * **`WeatherStates`**: Определяет состояния для машины состояний (FSM).
+    * **`send_welcome`**: Отправляет приветственное сообщение при старте.
+    * **`send_help`**: Отправляет сообщение с инструкциями при вызове команды /help.
+    * **`set_city`, `receive_city`**: Обрабатывают команду /setcity и сохраняют введенный город.
+    * **`send_weather`**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
 
 3. **main.py**:
-    * **main**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
-### Установка и требования
+    * **`main`**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
+
+### Требования
+
+- Python 3.8+
+- aiogram 3.8.0
+- requests
+- redis-server
+
+### Установка
 
 1. Клонируйте репозиторий:
     ```sh
-    git clone https://github.com/yourusername/weather-forecast-bot.git
-    cd weather-forecast-bot
+    git clone https://github.com/username/TG01_Weather_bot.git
     ```
-
-2. Создайте виртуальное окружение и активируйте его:
+2. Перейдите в директорию проекта:
     ```sh
-    python -m venv .venv
-    source .venv/bin/activate  # Для Windows: .venv\Scripts\activate
+    cd TG01_Weather_bot
     ```
-
-3. Установите зависимости:
+3. Создайте и активируйте виртуальное окружение:
+    ```sh
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+4. Установите зависимости:
     ```sh
     pip install -r requirements.txt
     ```
+5. Настройте переменные окружения в файле `config.py`:
 
-4. Убедитесь, что у вас установлен и запущен Redis:
-    ```sh
-    # Для macOS
-    brew install redis
-    brew services start redis
-
-    # Для Ubuntu
-    sudo apt update
-    sudo apt install redis-server
-    sudo systemctl enable redis-server.service
-    sudo systemctl start redis-server.service
-
-    # Для Windows скачайте и установите Redis с https://github.com/microsoftarchive/redis/releases
-    ```
-
-5. Создайте файл `config.py` и заполните его своими данными:
     ```python
-    # config.py
-    API_TOKEN = 'ВАШ_ТОКЕН'
-    WEATHER_API_KEY = 'ВАШ_КЛЮЧ_ОТ_OPENWEATHERMAP'
+    API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
+    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```
 
-6. Запустите бота:
-    ```sh
-    python main.py
-    ```
-   
+---
+
 ## <a name="english"></a>Description in English
 
 ### Description
 
-This Telegram bot uses the OpenWeatherMap API to get weather forecasts in three formats: minutely forecast for 1 hour, hourly forecast for 48 hours, and daily forecast for 8 days. The bot supports setting the city by the user and saving its state using Redis.
+This project is a Telegram bot named WeatherBot that provides up-to-date weather information. The bot allows users to set their city and receive weather forecasts, including current temperature, daily forecast, and atmospheric conditions.
 
 ### Code Explanation
 
 1. **weather.py**:
-    * **get_weather_data**: Makes a request to the OpenWeatherMap API to get weather data.
-    * **format_minutely_forecast, format_hourly_forecast, format_daily_forecast**: Format data for minutely, hourly, and daily forecasts respectively.
-    * **get_weather_forecast**: Fetches weather data and returns formatted strings for all three types of forecasts.
+    * **`get_weather_data`**: Makes a request to the Open-Meteo API to get weather data.
+    * **`get_current_weather`**: Gets current weather and formats the data for display.
+    * **`get_daily_forecast`**: Gets daily weather forecast and formats the data for display.
+    * **`get_atmospheric_conditions`**: Gets atmospheric conditions data and formats it.
+    * **`get_hourly_forecast`, `get_solar_and_uv_index`**: (Future) Get hourly forecast and solar radiation and UV index data respectively.
+    * **`get_weather_description`**: Returns weather condition description based on the weather code.
 
 2. **handlers.py**:
-    * **WeatherStates**: Defines states for the finite state machine (FSM).
-    * **send_welcome**: Sends a welcome message on start.
-    * **send_help**: Sends a help message when the /help command is called.
-    * **set_city, receive_city**: Handle the /setcity command and save the entered city.
-    * **send_weather**: Converts the entered city to coordinates, fetches the weather forecast, and sends it to the user.
+    * **`WeatherStates`**: Defines states for the finite state machine (FSM).
+    * **`send_welcome`**: Sends a welcome message at the start.
+    * **`send_help`**: Sends an instruction message when the /help command is called.
+    * **`set_city`, `receive_city`**: Handle the /setcity command and save the entered city.
+    * **`send_weather`**: Converts the entered city to coordinates, gets the weather forecast, and sends it to the user.
 
 3. **main.py**:
-    * **main**: Initializes the bot, connects Redis for state storage, sets up commands, and starts polling.
+    * **`main`**: Initializes the bot, connects Redis for state storage, sets commands, and starts polling.
 
-### Installation and Requirements
+### Requirements
+
+- Python 3.8+
+- aiogram 3.8.0
+- requests
+- redis-server
+
+### Installation
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/weather-forecast-bot.git
-    cd weather-forecast-bot
+    git clone https://github.com/username/TG01_Weather_bot.git
     ```
-
-2. Create and activate a virtual environment:
+2. Navigate to the project directory:
     ```sh
-    python -m venv .venv
-    source .venv/bin/activate  # For Windows: .venv\Scripts\activate
+    cd TG01_Weather_bot
     ```
-
-3. Install dependencies:
+3. Create and activate a virtual environment:
+    ```sh
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+4. Install dependencies:
     ```sh
     pip install -r requirements.txt
     ```
+5. Set up environment variables in the `config.py` file:
 
-4. Ensure you have Redis installed and running:
-    ```sh
-    # For macOS
-    brew install redis
-    brew services start redis
-
-    # For Ubuntu
-    sudo apt update
-    sudo apt install redis-server
-    sudo systemctl enable redis-server.service
-    sudo systemctl start redis-server.service
-
-    # For Windows, download and install Redis from https://github.com/microsoftarchive/redis/releases
-    ```
-
-5. Create a `config.py` file and fill it with your data:
     ```python
-    # config.py
     API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
-    WEATHER_API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY'
+    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```
-
-6. Run the bot:
-    ```sh
-    python main.py
-    ```
----
