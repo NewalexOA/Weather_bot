@@ -1,12 +1,12 @@
 aiofiles==23.2.1
-aiogram @ https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.zip#sha256=6d89a656b60058dacebe6d298e7271cd7828a6ca6a01bed356eadf07c8490f74
+aiogram @ https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.zip
 aiogram[redis]
 aiohttp==3.9.5
 aiosignal==1.3.1
 annotated-types==0.7.0
 async-timeout==4.0.3
 attrs==23.2.0
-certifi==2024.7.4
+certifi>=2024.07.04
 charset-normalizer==3.3.2
 frozenlist==1.4.1
 hiredis==2.3.2
