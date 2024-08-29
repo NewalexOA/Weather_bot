@@ -60,8 +60,8 @@
 5. Настройте переменные окружения в файле `config.py`:
 
     ```python
-    API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
-    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
+   API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
+   OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```
 
 ---
@@ -121,6 +121,6 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
 5. Set up environment variables in the `config.py` file:
 
     ```python
-    API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
-    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
+   API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
+   OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```

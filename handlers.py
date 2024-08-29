@@ -37,24 +37,33 @@ async def send_help(message: Message):
 @router.message(Command("setcity"))
 async def set_city(message: Message, state: FSMContext):
     await message.answer("Пожалуйста, введите название вашего города:")
-    # Установка состояния ожидания ввода города
     await state.set_state(WeatherStates.waiting_for_city)
 
 # Обработчик для получения названия города от пользователя
 @router.message(WeatherStates.waiting_for_city)
 async def receive_city(message: Message, state: FSMContext):
     city = message.text
+
     # Сохранение города в данные состояния
     await state.update_data(city=city)
-    await message.answer(f"Город установлен на {city}. Теперь вы можете использовать команду /weather для получения прогноза.")
-    # Очистка состояния после получения города
-    await state.clear()
+
+    # Очищаем состояние, но сохраняем данные
+    await state.set_state(None)
+
+    await message.answer(
+        f"Город установлен на {city}. Теперь вы можете использовать команду /weather для получения прогноза."
+    )
 
 # Обработчик команды /weather для получения прогноза погоды
 @router.message(Command("weather"))
 async def send_weather(message: Message, state: FSMContext):
     data = await state.get_data()
-    city = data.get("city", "Москва")
+
+    city = data.get("city", None)
+
+    if not city:
+        await message.answer("Сначала установите город с помощью команды /setcity.")
+        return
 
     # Преобразование города в координаты (широта и долгота) с использованием OpenCage Geocoder
     geocode_url = f"https://api.opencagedata.com/geocode/v1/json?q={city}&key={config.OPENCAGE_API_KEY}"
@@ -67,10 +76,20 @@ async def send_weather(message: Message, state: FSMContext):
         if geocode_response['results']:
             lat = geocode_response['results'][0]['geometry']['lat']
             lon = geocode_response['results'][0]['geometry']['lng']
+
             current_weather = get_current_weather(lat, lon)
             daily_forecast = get_daily_forecast(lat, lon)
             atmospheric_conditions = get_atmospheric_conditions(lat, lon)
-            await message.answer(f"{current_weather}\n\n{daily_forecast}\n\n{atmospheric_conditions}")
+
+            # Формирование сообщения с заголовком
+            weather_message = (
+                f"Прогноз погоды в городе {city}:\n\n"
+                f"{current_weather}\n\n"
+                f"{daily_forecast}\n"
+                f"{atmospheric_conditions}"
+            )
+
+            await message.answer(weather_message)
         else:
             await message.answer("Не удалось найти координаты города. Пожалуйста, проверьте название города.")
     except requests.exceptions.RequestException as e:
