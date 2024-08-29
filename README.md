@@ -24,8 +24,8 @@
     * **[`WeatherStates`](handlers.py#L14)**: Класс. Определяет состояния для машины состояний (FSM).
     * **[`send_welcome`](handlers.py#L19)**: Отправляет приветственное сообщение при старте.
     * **[`send_help`](handlers.py#L29)**: Отправляет сообщение с инструкциями при вызове команды /help.
-    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L45)**: Обрабатывают команду /setcity и сохраняют введенный город.
-    * **[`send_weather`](handlers.py#L55)**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
+    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L44)**: Обрабатывают команду /setcity и сохраняют введенный город.
+    * **[`send_weather`](handlers.py#L59)**: Преобразует введенный город в координаты, получает прогноз погоды и отправляет его пользователю.
 
 3. **main.py**:
     * **[`main`](main.py#L9)**: Инициализирует бота, подключает Redis для хранения состояний, устанавливает команды и запускает polling.
@@ -97,8 +97,8 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
     * **[`WeatherStates`](handlers.py#L14)**: Defines states for the finite state machine (FSM).
     * **[`send_welcome`](handlers.py#L19)**: Sends a welcome message at the start.
     * **[`send_help`](handlers.py#L29)**: Sends an instruction message when the /help command is called.
-    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L45)**: Handle the /setcity command and save the entered city.
-    * **[`send_weather`](handlers.py#L55)**: Converts the entered city to coordinates, gets the weather forecast, and sends it to the user.
+    * **[`set_city`](handlers.py#L38), [`receive_city`](handlers.py#L44)**: Handle the /setcity command and save the entered city.
+    * **[`send_weather`](handlers.py#L59)**: Converts the entered city to coordinates, gets the weather forecast, and sends it to the user.
 
 3. **main.py**:
     * **[`main`](main.py#L9)**: Initializes the bot, connects Redis for state storage, sets commands, and starts polling.
