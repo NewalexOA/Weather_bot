@@ -62,6 +62,12 @@
    API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```
+    Для получения `YOUR_OPENCAGE_API_KEY`:
+   - Перейдите на [сайт OpenCage](https://opencagedata.com/).
+   - Зарегистрируйтесь или войдите в свой аккаунт.
+   - Перейдите в раздел API-ключей на панели управления и создайте новый API-ключ.
+   - Скопируйте полученный ключ и вставьте его в файл `config.py`.
+
 
 6. Установите и запустите Redis:
    - Установите Redis (например, через Homebrew на macOS):
@@ -135,6 +141,12 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
    API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```
+    To obtain `YOUR_OPENCAGE_API_KEY`:
+   - Visit the [OpenCage website](https://opencagedata.com/).
+   - Sign up or log in to your account.
+   - Navigate to the API keys section in the dashboard and create a new API key.
+   - Copy the obtained key and paste it into the `config.py` file.
+
 
 6. Install and start Redis:
    - Install Redis (e.g., via Homebrew on macOS):
