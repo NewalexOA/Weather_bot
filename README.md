@@ -2,7 +2,6 @@
 
 ### [Description in English](#english)
 
-
 ---
 
 ## <a name="русский"></a>Описание на русском языке
@@ -42,11 +41,11 @@
 
 1. Клонируйте репозиторий:
     ```sh
-    git clone https://github.com/username/TG01_Weather_bot.git
+    git clone https://github.com/NewalexOA/Weather_bot.git
     ```
 2. Перейдите в директорию проекта:
     ```sh
-    cd TG01_Weather_bot
+    cd Weather_bot
     ```
 3. Создайте и активируйте виртуальное окружение:
     ```sh
@@ -63,6 +62,18 @@
    API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```
+
+6. Установите и запустите Redis:
+   - Установите Redis (например, через Homebrew на macOS):
+     ```sh
+     brew install redis
+     ```
+   - Запустите Redis:
+     ```sh
+     brew services start redis
+     ```
+
+   Для других операционных систем установка Redis может различаться, пожалуйста, следуйте инструкциям на официальном сайте Redis.
 
 ---
 
@@ -103,11 +114,11 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/username/TG01_Weather_bot.git
+    git clone https://github.com/NewalexOA/Weather_bot.git
     ```
 2. Navigate to the project directory:
     ```sh
-    cd TG01_Weather_bot
+    cd Weather_bot
     ```
 3. Create and activate a virtual environment:
     ```sh
@@ -124,3 +135,15 @@ This project is a Telegram bot named WeatherBot that provides up-to-date weather
    API_TOKEN = 'YOUR_TELEGRAM_BOT_API_TOKEN'
    OPENCAGE_API_KEY = 'YOUR_OPENCAGE_API_KEY'
     ```
+
+6. Install and start Redis:
+   - Install Redis (e.g., via Homebrew on macOS):
+     ```sh
+     brew install redis
+     ```
+   - Start Redis:
+     ```sh
+     brew services start redis
+     ```
+
+   For other operating systems, the installation process for Redis may vary. Please follow the instructions on the official Redis website.
